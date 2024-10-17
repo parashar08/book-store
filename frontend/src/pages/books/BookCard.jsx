@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { FiShoppingCart } from "react-icons/fi";
+import { Link } from 'react-router-dom';
+import { FiShoppingCart } from 'react-icons/fi';
 import { getImgUrl } from '../../utils/getImgUrl';
 
-const BookCard = ({book}) => {
+const BookCard = ({ book }) => {
     return (
         <div className="transition-shadow duration-300 rounded-lg ">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:h-72 sm:justify-center">
@@ -23,16 +23,20 @@ const BookCard = ({book}) => {
                             {book?.title}
                         </h3>
                     </Link>
-                    <p className="mb-5 text-gray-600">{book?.description.length > 80 ? `${book.description.slice(0, 80)}...` : book.description}</p>
+                    <p className="mb-5 text-gray-600">
+                        {book?.description.length > 80
+                            ? `${book.description.slice(0, 80)}...`
+                            : book.description}
+                    </p>
                     <p className="mb-5 font-medium">
                         ${book?.newPrice}
                         <span className="ml-2 font-normal line-through">
                             ${book?.oldPrice}
                         </span>
                     </p>
-                    <button className="flex items-center gap-1 px-6 space-x-1 btn-primary ">
-                        <FiShoppingCart className="" />
-                        <span>Add to Cart</span>
+                    <button className="flex items-center h-10 gap-1 px-6 space-x-2 rounded-md bg-primary font-secondary">
+                        <FiShoppingCart className="size-5" />
+                        <p>Add to Cart</p>
                     </button>
                 </div>
             </div>
