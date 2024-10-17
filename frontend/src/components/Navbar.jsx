@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa6';
 import { IoSearch } from 'react-icons/io5';
@@ -7,7 +7,16 @@ import { LuHeart } from 'react-icons/lu';
 import { FaShoppingCart } from 'react-icons/fa';
 import avatarImg from '../assets/avatar.png';
 
+const navigation = [
+    { name: 'Dashboard', href: '/dashboard' },
+    { name: 'Orders', href: '/orders' },
+    { name: 'Cart Page', href: '/cart' },
+    { name: 'Check Out', href: '/checkout' },
+];
+
 const Navbar = () => {
+    const [isDrowdownOpen, setIsDrowdownOpen] = useState(false);
+
     const currentUser = true;
     return (
         <header className="max-w-screen-2xl mx-auto px-4 py-6">
@@ -30,7 +39,9 @@ const Navbar = () => {
                 {/* right side */}
                 <div className="relative flex items-center md:space-x-3 space-x-2">
                     {currentUser ? (
-                        <button>
+                        <button
+                            onClick={() => setIsDrowdownOpen(!isDrowdownOpen)}
+                        >
                             <img
                                 src={avatarImg}
                                 alt=""
@@ -41,6 +52,20 @@ const Navbar = () => {
                         <Link to="/login">
                             <FaUser />
                         </Link>
+                    )}
+                    {isDrowdownOpen && (
+                        <div className="absolute top-12 right-10 bg-white shadow-md py-2 px-4 rounded-md">
+                            {navigation.map((item) => (
+                                <Link
+                                    onClick={() => setIsDrowdownOpen(false)}
+                                    key={item.name}
+                                    to={item.href}
+                                    className="block py-1 hover:bg-gray-100"
+                                >
+                                    {item.name}
+                                </Link>
+                            ))}
+                        </div>
                     )}
                     <button className="hidden sm:block ">
                         <LuHeart className="size-6" />
