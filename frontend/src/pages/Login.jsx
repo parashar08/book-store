@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaGoogle } from "react-icons/fa";
-import { useForm } from "react-hook-form"
+import { FaGoogle } from 'react-icons/fa';
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
     const [message, setMessage] = useState('');
@@ -14,9 +14,7 @@ const Login = () => {
 
     const onSubmit = (data) => console.log(data);
 
-    const handleGoogleSignin = () => {
-
-    }
+    const handleGoogleSignin = () => {};
     return (
         <div className="h-[calc(100vh-120px)] flex justify-center items-center">
             <div className="w-full max-w-sm px-8 pt-6 pb-8 mx-auto mb-4 bg-white rounded shadow-md">
@@ -31,7 +29,7 @@ const Login = () => {
                             Email
                         </label>
                         <input
-                            {...register("email", { required: true })}
+                            {...register('email', { required: true })}
                             type="email"
                             name="email"
                             id="email"
@@ -47,7 +45,7 @@ const Login = () => {
                             Password
                         </label>
                         <input
-                            {...register("password", { required: true })}
+                            {...register('password', { required: true })}
                             type="password"
                             name="password"
                             id="password"
@@ -55,11 +53,11 @@ const Login = () => {
                             className="w-full px-3 py-2 leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow"
                         />
                     </div>
-                    {
-                        message && (
-                            <div className="mb-3 text-xs italic text-red-500">{message}</div>
-                        )
-                    }
+                    {message && (
+                        <div className="mb-3 text-xs italic text-red-500">
+                            {message}
+                        </div>
+                    )}
                     <div>
                         <button className="px-8 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none">
                             Login{' '}
@@ -77,15 +75,20 @@ const Login = () => {
                 </p>
 
                 {/* google sign in */}
-                <div className='mt-4'>
-                    <button 
-                    onClick={handleGoogleSignin}
-                    className='flex flex-wrap items-center justify-center w-full gap-2 px-4 py-2 font-bold text-white rounded bg-secondary hover:bg-blue-700 focus:outline-none'>
+                <div className="mt-4">
+                    <button
+                        onClick={handleGoogleSignin}
+                        className="flex flex-wrap items-center justify-center w-full gap-2 px-4 py-2 font-bold text-white rounded bg-secondary hover:bg-blue-700 focus:outline-none"
+                    >
                         <FaGoogle className="inline-block size-6" />
-                        <span className="inline-block ml-2">Sign in with Google</span>
+                        <span className="inline-block ml-2">
+                            Sign in with Google
+                        </span>
                     </button>
                 </div>
-                <p className='mt-5 text-xs text-center text-gray-500'>©2025 Book Store. All rights reserved.</p>
+                <p className="mt-5 text-xs text-center text-gray-500">
+                    ©2025 Book Store. All rights reserved.
+                </p>
             </div>
         </div>
     );
