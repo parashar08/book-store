@@ -2,20 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getImgUrl } from '../utils/getImgUrl';
-import { removeFromCart, clearCart } from "../redux/features/cart/cartSlice";
+import { removeFromCart, clearCart } from '../redux/features/cart/cartSlice';
 
 const Cart = () => {
     const cartItems = useSelector((state) => state.cart.cartItems);
-    const totalPrice = cartItems.reduce((acc, item) => acc + item.newPrice, 0).toFixed(2);
+    const totalPrice = cartItems
+        .reduce((acc, item) => acc + item.newPrice, 0)
+        .toFixed(2);
     const dispatch = useDispatch();
 
     const handleRemoveFromCart = (product) => {
         dispatch(removeFromCart(product));
-    }
+    };
 
     const handleClearCart = () => {
-        dispatch(clearCart())
-    }
+        dispatch(clearCart());
+    };
     return (
         <div className="flex flex-col h-full mt-12 overflow-hidden bg-white shadow-xl">
             <div className="flex-1 px-4 py-6 overflow-y-auto sm:px-6">
@@ -75,7 +77,11 @@ const Cart = () => {
 
                                                 <div className="flex">
                                                     <button
-                                                        onClick={() => handleRemoveFromCart(product)}
+                                                        onClick={() =>
+                                                            handleRemoveFromCart(
+                                                                product
+                                                            )
+                                                        }
                                                         type="button"
                                                         className="font-medium text-indigo-600 hover:text-indigo-500"
                                                     >
