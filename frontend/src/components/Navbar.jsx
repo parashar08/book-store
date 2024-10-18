@@ -17,17 +17,17 @@ const navigation = [
 const Navbar = () => {
     const [isDrowdownOpen, setIsDrowdownOpen] = useState(false);
 
-    const currentUser = true;
+    const currentUser = false;
     return (
-        <header className="max-w-screen-2xl mx-auto px-4 py-6">
-            <nav className="flex justify-between items-center">
+        <header className="px-4 py-6 mx-auto max-w-screen-2xl">
+            <nav className="flex items-center justify-between">
                 {/* left side */}
-                <div className="flex items-center md:gap-16 gap-4">
+                <div className="flex items-center gap-4 md:gap-16">
                     <Link to="/">
                         <FaBars className="size-6" />
                     </Link>
-                    <div className="relative sm:w-72 w-40 space-x-2">
-                        <IoSearch className="absolute size-6 inline-block left-3 inset-y-1" />
+                    <div className="relative w-40 space-x-2 sm:w-72">
+                        <IoSearch className="absolute inline-block size-6 left-3 inset-y-1" />
                         <input
                             type="text"
                             placeholder="Search here"
@@ -37,7 +37,7 @@ const Navbar = () => {
                 </div>
 
                 {/* right side */}
-                <div className="relative flex items-center md:space-x-3 space-x-2">
+                <div className="relative flex items-center space-x-2 md:space-x-3">
                     {currentUser ? (
                         <button
                             onClick={() => setIsDrowdownOpen(!isDrowdownOpen)}
@@ -50,11 +50,11 @@ const Navbar = () => {
                         </button>
                     ) : (
                         <Link to="/login">
-                            <FaUser />
+                            <FaUser className='size-5'/>
                         </Link>
                     )}
                     {isDrowdownOpen && (
-                        <div className="absolute top-12 right-10 bg-white shadow-md py-2 px-4 rounded-md">
+                        <div className="absolute px-4 py-2 bg-white rounded-md shadow-md top-12 right-10">
                             {navigation.map((item) => (
                                 <Link
                                     onClick={() => setIsDrowdownOpen(false)}
@@ -72,7 +72,7 @@ const Navbar = () => {
                     </button>
                     <Link
                         to="/cart"
-                        className="bg-primary p-1 sm:px-6 px-2 flex items-center rounded-md"
+                        className="flex items-center p-1 px-2 rounded-md bg-primary sm:px-6"
                     >
                         <FaShoppingCart className="" />
                         <span className="text-sm font-semibold sm:ml-1">0</span>
