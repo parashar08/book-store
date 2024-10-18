@@ -6,6 +6,7 @@ import { FaUser } from 'react-icons/fa';
 import { LuHeart } from 'react-icons/lu';
 import { FaShoppingCart } from 'react-icons/fa';
 import avatarImg from '../assets/avatar.png';
+import { useSelector } from "react-redux"
 
 const navigation = [
     { name: 'Dashboard', href: '/dashboard' },
@@ -16,6 +17,8 @@ const navigation = [
 
 const Navbar = () => {
     const [isDrowdownOpen, setIsDrowdownOpen] = useState(false);
+    const cartItems = useSelector(state => state.cart.cartItems);
+    console.log(cartItems);
 
     const currentUser = false;
     return (
@@ -50,7 +53,7 @@ const Navbar = () => {
                         </button>
                     ) : (
                         <Link to="/login">
-                            <FaUser className='size-5'/>
+                            <FaUser className="size-5" />
                         </Link>
                     )}
                     {isDrowdownOpen && (

@@ -70,7 +70,6 @@ const News = () => {
                         slidesPerView: 2,
                         spaceBetween: 50,
                     },
-                    
                 }}
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
@@ -85,12 +84,18 @@ const News = () => {
                                         {item.title}
                                     </h3>
                                 </Link>
-                                <div className='w-12 bg-primary h-[4px] mb-5'></div>
-                                <p className='text-sm text-gray-600'>{item.description}</p>
+                                <div className="w-12 bg-primary h-[4px] mb-5"></div>
+                                <p className="text-sm text-gray-600">
+                                    {item.description}
+                                </p>
                             </div>
 
-                            <div className='flex-shrink-0'>
-                                <img src={item.image} alt="" className='object-cover w-full' />
+                            <div className="flex-shrink-0">
+                                <img
+                                    src={item.image}
+                                    alt=""
+                                    className="object-cover w-full"
+                                />
                             </div>
                         </div>
                     </SwiperSlide>
