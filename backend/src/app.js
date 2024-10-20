@@ -14,4 +14,7 @@ app.use(express.urlencoded({ extended: true, limit: '20kb' }));
 app.use(cookieParser());
 app.use(cors(corsOptions));
 
+import bookRouter from './routes/book.route.js';
+app.use('/api/books', bookRouter);
+
 export default app;
