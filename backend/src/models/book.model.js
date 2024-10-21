@@ -1,39 +1,39 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema } from 'mongoose';
 
 const bookSchema = new Schema(
     {
         title: {
             type: String,
-            required: true
+            required: true,
         },
         description: {
             type: String,
-            required: true
+            required: true,
         },
         category: {
             type: String,
-            required: true
+            required: true,
         },
         trending: {
             type: Boolean,
-            required: true
+            required: true,
         },
         coverImage: {
             type: String,
-            required: true
+            required: true,
         },
         oldPrice: {
             type: Number,
         },
         newPrice: {
-            type: Number
+            type: Number,
         },
         createdAt: {
             type: Date,
-            default: Date.now
-        }
+            default: Date.now,
+        },
     },
     { timestamps: true }
-)
+);
 
-export const Book = mongoose.model("Book", bookSchema);
+export const Book = mongoose.model('Book', bookSchema);
