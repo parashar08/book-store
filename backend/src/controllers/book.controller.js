@@ -57,7 +57,55 @@ export const createBook = asyncHandler(async (req, res) => {
 // get all book
 export const getAllBooks = asyncHandler(async (req, res) => {
     const books = await Book.find().sort({ createdAt: -1 });
+
     return res
         .status(200)
         .json(new ApiResponse(200, books, 'Books fetched successfully'));
+});
+
+// get single book
+export const getSingleBook = asyncHandler(async (req, res) => {
+    const { bookId } = req.params;
+    const book = await Book.findById(bookId);
+
+    if (!book) {
+        throw new ApiError(404, 'Book not found');
+    }
+
+    return res
+        .status(200)
+        .json(new ApiResponse(200, book, 'Book fetched successfully'));
+});
+
+// update book data
+export const updateBook = asyncHandler(async (req, res) => {
+    const { bookId } = req.params;
+    const bookData = req.body;
+
+    const updatedBook = await Book.findByIdAndUpdate(bookId, bookData, {
+        new: true,
+        runValidators: true,
+    });
+
+    if (!updatedBook) {
+        throw new ApiError(500, 'Error updating book');
+    }
+
+    return res
+        .status(200)
+        .json(new ApiResponse(200, updatedBook, 'book updated successfully!'));
+});
+
+// delete book by its id
+export const deleteBookById = asyncHandler(async (req, res) => {
+    const { bookId } = req.params;
+    const deletedBook = await Book.findByIdAndDelete(bookId);
+
+    if (!deletedBook) {
+        throw new ApiError(404, 'book with given id not found!');
+    }
+
+    return res
+        .status(200)
+        .json(new ApiResponse(200, deletedBook, 'book deleted successfully!'));
 });
