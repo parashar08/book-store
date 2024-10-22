@@ -18,7 +18,6 @@ const navigation = [
 const Navbar = () => {
     const [isDrowdownOpen, setIsDrowdownOpen] = useState(false);
     const cartItems = useSelector((state) => state.cart.cartItems);
-    console.log(cartItems);
 
     const currentUser = false;
     return (
