@@ -5,6 +5,8 @@ import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { useFetchAllBooksQuery } from '../../redux/features/books/booksApi';
+import { FiCloudLightning } from 'react-icons/fi';
 
 const categories = [
     'Choose a genre',
@@ -15,20 +17,15 @@ const categories = [
 ];
 
 const TopSellers = () => {
-    const [books, setBooks] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('Choose a genre');
 
-    useEffect(() => {
-        fetch('books.json')
-            .then((res) => res.json())
-            .then((data) => setBooks(data));
-    }, []);
+    const { data: books = [] } = useFetchAllBooksQuery();
 
     const filteredBooks =
         selectedCategory === 'Choose a genre'
-            ? books
-            : books.filter(
-                  (book) => book.category == selectedCategory.toLowerCase()
+            ? books.data || []
+            : books.data.filter(
+                  (book) => book.category === selectedCategory.toLowerCase()
               );
 
     return (
