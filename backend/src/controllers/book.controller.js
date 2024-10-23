@@ -65,8 +65,8 @@ export const getAllBooks = asyncHandler(async (req, res) => {
 
 // get single book
 export const getSingleBook = asyncHandler(async (req, res) => {
-    const { bookId } = req.params;
-    const book = await Book.findById(bookId);
+    const { id } = req.params;
+    const book = await Book.findById(id);
 
     if (!book) {
         throw new ApiError(404, 'Book not found');
